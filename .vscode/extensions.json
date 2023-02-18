@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "yo1dog.cursor-align",
+    "ypresto.vscode-intelli-refactor",
+    "nicoespeon.abracadabra",
+    "eamodio.gitlens",
+    "tabnine.tabnine-vscode",
+    "ms-azuretools.vscode-docker"
+  ]
+}
