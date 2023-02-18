@@ -3,4 +3,4 @@ home/.vscode-server/*
 home/.vscode-server/data/*
 !home/.vscode-server
 !home/.vscode-server/data
-!home/.vscode-server/data/Machinef
+!home/.vscode-server/data/Machine
