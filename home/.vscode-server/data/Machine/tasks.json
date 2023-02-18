@@ -1,0 +1,23 @@
+{
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start",
+      "type": "shell",
+      "command": "npm install && npm run build && npm start",
+      "problemMatcher": [],
+      "runOptions": { "instanceLimit": 1, "runOn": "folderOpen" }
+    },
+    {
+      "label": "Install recommend extensions",
+      "command": "npx -y json5 .vscode/extensions.json | npx -y json-cli-tool --path=recommendations --output=newline | xargs -L 1 code --install-extension",
+      "type": "shell",
+      "group": "build",
+      "problemMatcher": [],
+      "hide": true,
+      "isBackground": true,
+      "runOptions": { "instanceLimit": 1, "runOn": "folderOpen" }
+    }
+  ]
+}

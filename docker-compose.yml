@@ -6,7 +6,6 @@ services:
       PORT: 2314
     volumes:
       - ./home:/root/
-      - ./home:/root/.gitconfig
       - ./:/code-js/
     ports:
       - 127.0.0.1:2314:2314
