@@ -2,7 +2,7 @@ FROM node:latest
 RUN npm i -g pnpm snocommit tsx typescript
 RUN apt-get update && apt-get install -y git curl && \
     curl -fsSL https://aka.ms/install-vscode-server/setup.sh | sh
-ENV PORT=8000
+ENV VSCODE_SERVER_PORT=8000
 # COPY ./vscode/* /root/.vscode-server/data/Machine/
 COPY ./home/.vscode-server/data/Machine/ /root/.vscode-server/data/Machine/
 RUN code-server serve-local \
@@ -18,5 +18,5 @@ RUN code-server serve-local \
 CMD code-server serve-local \
     --accept-server-license-terms \
     --host 0.0.0.0 \
-    --port $PORT \
+    --port $VSCODE_SERVER_PORT \
     --without-connection-token
