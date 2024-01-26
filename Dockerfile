@@ -1,5 +1,5 @@
 FROM node:latest
-RUN npm i -g pnpm snocommit tsx typescript
+RUN npm i -g pnpm snocommit tsx typescript bun
 RUN apt-get update && apt-get install -y git curl && \
     curl -fsSL https://aka.ms/install-vscode-server/setup.sh | sh
 ENV VSCODE_SERVER_PORT=8000
@@ -11,8 +11,6 @@ RUN code-server serve-local \
     --install-extension "esbenp.prettier-vscode" \
     --install-extension "ms-azuretools.vscode-docker" \
     --install-extension "nicoespeon.abracadabra" \
-    --install-extension "tabnine.tabnine-vscode" \
-    --install-extension "yo1dog.cursor-align" \
     --install-extension "ypresto.vscode-intelli-refactor" \
     --accept-server-license-terms
 CMD code-server serve-local \
