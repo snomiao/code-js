@@ -22,26 +22,20 @@ RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | ba
     ln -s "$(which npm)" /usr/bin/ && \
     ln -s "$(which node)" /usr/local/ && \
     ln -s "$(which npm)" /usr/local/
+
 # latest vscode-server
 # RUN curl -fsSL https://aka.ms/install-vscode-server/setup.sh | sh
-
 RUN \
     curl https://az764295.vo.msecnd.net/stable/$(curl https://update.code.visualstudio.com/api/commits/stable/server-linux-x64-web | cut -d '"' -f 2)/vscode-server-linux-x64-web.tar.gz \
     | tar xzvf -
 RUN mv -f vscode-server-linux-x64-web vscode-server && \
     chmod +x ./vscode-server/bin/code-server && \
     ln -s /vscode-server/bin/code-server /usr/bin/
-    #  && \
-    # export PATH="/vscode-server/bin:$PATH"
-
-# alias code-server ${PWD}/vscode-server/bin/*
 ENV VSCODE_SERVER_PORT=8000
 
-## COPY ./vscode/* /root/.vscode-server/data/Machine/
+COPY ./vscode/* /root/.vscode-server/data/Machine/
 
-# CMD bash
 ## install extensions
-# RUN cat /usr/bin/code-server  && code-server && exit 1
 RUN code-server serve-local \
     --install-extension "dbaeumer.vscode-eslint" \
     --install-extension "eamodio.gitlens" \
@@ -52,6 +46,7 @@ RUN code-server serve-local \
     --accept-server-license-terms
 
 COPY ./home/.vscode-server/data/Machine/ /root/.vscode-server/data/Machine/
+
 # run vscode without token
 # WARN: dont expose it directly into the whole network, instead use a reverse-proxy with auth.
 CMD code-server serve-local \
