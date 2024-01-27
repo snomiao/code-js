@@ -31,7 +31,6 @@ RUN \
 RUN mv -f vscode-server-linux-x64-web vscode-server && \
     chmod +x ./vscode-server/bin/code-server && \
     ln -s /vscode-server/bin/code-server /usr/bin/
-ENV VSCODE_SERVER_PORT=8000
 
 COPY ./vscode/* /root/.vscode-server/data/Machine/
 
@@ -49,8 +48,10 @@ COPY ./home/.vscode-server/data/Machine/ /root/.vscode-server/data/Machine/
 
 # run vscode without token
 # WARN: dont expose it directly into the whole network, instead use a reverse-proxy with auth.
+ENV VSCODE_SERVER_PORT=8000
+ENV VSCODE_SERVER_HOST=0.0.0.0
 CMD code-server serve-local \
     --accept-server-license-terms \
-    --host 0.0.0.0 \
+    --host $VSCODE_SERVER_HOST \
     --port $VSCODE_SERVER_PORT \
     --without-connection-token
