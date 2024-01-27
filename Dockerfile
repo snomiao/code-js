@@ -27,8 +27,8 @@ RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | ba
 # RUN curl -fsSL https://aka.ms/install-vscode-server/setup.sh | sh
 RUN \
     curl https://az764295.vo.msecnd.net/stable/$(curl https://update.code.visualstudio.com/api/commits/stable/server-linux-x64-web | cut -d '"' -f 2)/vscode-server-linux-x64-web.tar.gz \
-    | tar xzvf -
-RUN mv -f vscode-server-linux-x64-web vscode-server && \
+    | tar xzvf - && \
+    mv -f vscode-server-linux-x64-web vscode-server && \
     chmod +x ./vscode-server/bin/code-server && \
     ln -s /vscode-server/bin/code-server /usr/bin/
 
