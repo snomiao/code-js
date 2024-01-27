@@ -32,8 +32,6 @@ RUN mv -f vscode-server-linux-x64-web vscode-server && \
     chmod +x ./vscode-server/bin/code-server && \
     ln -s /vscode-server/bin/code-server /usr/bin/
 
-COPY ./vscode/* /root/.vscode-server/data/Machine/
-
 ## install extensions
 RUN code-server serve-local \
     --install-extension "dbaeumer.vscode-eslint" \
